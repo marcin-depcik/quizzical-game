@@ -9,14 +9,12 @@ export default function Quiz() {
     const [gameOver, setGameOver] = useState(false)
     const [newGame, setNewGame] = useState(false)
 
-    // fetching data
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple')
             .then((res) => res.json())
             .then((data) => setData(formatData(data.results)))
     }, [newGame])
 
-    // formating fetched data to better object strucer
     const formatData = (data) => {
         const questions = []
         data.forEach((item) => {
@@ -41,7 +39,6 @@ export default function Quiz() {
         return questions
     }
 
-    // function to select answers
     const selectAnswer = (value, questionID) => {
         for (let i = 0; i < 2; i++) {
             setData((prevData) => {
@@ -65,7 +62,6 @@ export default function Quiz() {
         }
     }
 
-    // function to check answers
     const checkAnswer = () => {
         setData((prevData) => {
             return prevData.map((item) => {
@@ -84,12 +80,10 @@ export default function Quiz() {
         setGameOver(true)
     }
 
-    // setting up new game
     const makeNewGame = () => {
         setNewGame((prev) => (prev = !prev))
     }
 
-    // creating array of displayed components
     const quiz = data.map((item) => {
         const answers = item.allAnswers.map(({ id, order, answer, isSelected, answerColor }) => {
             return (
