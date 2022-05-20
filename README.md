@@ -1,4 +1,4 @@
-# [Quizzical]()
+# [Quizzical](https://marcin-depcik.github.io/quizzical-game/)
 
 ## Table of contents
 
