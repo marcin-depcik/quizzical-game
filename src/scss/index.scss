@@ -1,0 +1,88 @@
+@import './reset.scss';
+
+/* Variables */
+$font-stack: 'Karla', sans-serif;
+$primary-font-color: #293264;
+$secondary-font-color: #F5F7FB;
+$primary-bg-color: #4D5B9E;
+$secondary-bg-color: #DEEBF8;
+$third-bg-color: #F5F7FB;
+$light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+$radius: 1rem;
+
+/* Functions */
+@mixin felxContent($position) {
+  display: flex;
+  justify-content: $position;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin styleButton {
+  font-family: inherit;
+  font-size: 1rem;
+  color: $secondary-font-color;
+  background-color: $primary-bg-color;
+  border: none;
+  border-radius: $radius;
+  padding: 0.5rem 2rem;
+  box-shadow: $dark-shadow;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+/* Styles */
+body {
+  @include felxContent(center);
+  min-height: 100vh;
+  font-family: $font-stack;
+  color: $primary-font-color;
+  background-color: $secondary-bg-color;
+  text-align: center;
+}
+
+main {
+  @include felxContent(center);
+  background-color: $third-bg-color;
+  min-height: 550px;
+  width: 80vw;
+  max-width: 550px;
+  border-radius: $radius;
+  box-shadow: $light-shadow;
+  padding: 1.5rem 3rem;
+  .btn--start {
+    @include styleButton();
+  }
+  .h--line {
+    margin-bottom: 1rem;
+    width: 100%;
+    border-bottom: 0.5px solid $primary-bg-color;
+  }
+  .answers {
+    width: 100%;
+    padding: 1rem 0 0.5rem 0;
+    @include felxContent(flex-start);
+    flex-direction: row;
+    flex-wrap: wrap;
+    .btn--answer {
+      @include styleButton();
+      font-size: 0.8rem;
+      color: $primary-font-color;
+      background-color: transparent;
+      border: 1px solid $primary-font-color;
+      box-shadow: none;
+      margin: 0 10px 10px 0;
+      padding: 0.25rem 1.25rem;
+    }
+    .btn--answer.selected {
+      background-color: #D6DBF5;
+    }
+  }
+  h3 {
+    width: 100%;
+    text-align: start;
+  }
+  .btn--check {
+    @include styleButton();
+  }
+}
